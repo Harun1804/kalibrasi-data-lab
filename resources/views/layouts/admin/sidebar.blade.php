@@ -16,7 +16,7 @@
                 </div>
             </div>
             <ul class="nav nav-primary">
-                <li class="nav-item active">
+                <li class="nav-item {{ (Request::segment(2) == "dashboard") ? "active" : "" }}">
                     <a href="#">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
@@ -30,68 +30,64 @@
                     <h4 class="text-section">Menu</h4>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item {{ (Request::segment(2) == "users") ? "active" : "" }}">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
-                        <p>Alat</p>
+                        <p>Users</p>
                         <span class="caret"></span>
                     </a>
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="components/avatars.html">
-                                    <span class="sub-item">Input</span>
+                                <a href="#">
+                                    <span class="sub-item">Admin</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="components/buttons.html">
-                                    <span class="sub-item">Maintenance</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/gridsystem.html">
-                                    <span class="sub-item">Penggunaan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/panels.html">
-                                    <span class="sub-item">Pemeliharaan</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="components/notifications.html">
-                                    <span class="sub-item">Monitoring & Evaluasi</span>
+                                <a href="#">
+                                    <span class="sub-item">Pegawai</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
                 
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        <p>Kelola Users</p>
+                <li class="nav-item {{ (Request::segment(2) == "kalibrasi") ? "active" : "" }}">
+                    <a data-toggle="collapse" href="#kalibrasi">
+                        <i class="fas fa-layer-group"></i>
+                        <p>Kalibrasi</p>
+                        <span class="caret"></span>
                     </a>
+                    <div class="collapse" id="kalibrasi">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item">Alat</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item">Merk Alat</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item">Lokasi</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="sub-item">Input Data Kalibrasi</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item {{ (Request::segment(2) == "perusahaan") ? "active" : "" }}">
                     <a href="#">
                         <i class="fas fa-home"></i>
-                        <p>Kelola Alat</p>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        <p>Kelola Kegiatan</p>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                    <a href="#">
-                        <i class="fas fa-home"></i>
-                        <p>Kelola Alat Kegiatan</p>
+                        <p>Kelola Perusahaan</p>
                     </a>
                 </li>
 

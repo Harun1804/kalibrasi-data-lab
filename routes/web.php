@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,9 @@ Route::get('auth',[HomepageController::class,'auth'])->name('login');
 Route::post('login',[AuthController::class,'login'])->name('verify.login');
 Route::post('register',[AuthController::class,'registrasi'])->name('register');
 Route::get('logout',[AuthController::class,'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+    });
+});
