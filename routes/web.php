@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
         Route::prefix('kalibrasi')->name('kalibrasi.')->group(function () {
             Route::get('merk-alat', [AdminController::class,'merkAlat'])->name('merk.alat');
             Route::get('alat', [AdminController::class,'alat'])->name('alat');
+            Route::get('tempat-waktu', [AdminController::class,'tempatWaktu'])->name('tempat.waktu');
         });
     });
 });

@@ -25,4 +25,9 @@ class AdminController extends Controller
     {
         return view('admin.alat');
     }
+
+    public function tempatWaktu()
+    {
+        return view('admin.tempat-waktu');
+    }
 }

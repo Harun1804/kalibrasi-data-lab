@@ -71,8 +71,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="sub-item">Lokasi</span>
+                                <a href="{{ route('admin.kalibrasi.tempat.waktu') }}">
+                                    <span class="sub-item">Tempat Waktu</span>
                                 </a>
                             </li>
                             <li>
