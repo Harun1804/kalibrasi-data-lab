@@ -21,6 +21,11 @@
 	<!-- CSS Files -->
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/atlantis.css') }}">
+	<style>
+		.kosong {
+			text-align: center
+		}
+	</style>
 	@yield('css-vendor')
 	@yield('css-script')
 </head>
@@ -136,6 +141,23 @@
 
 	<!-- Atlantis JS -->
 	<script src="{{ asset('assets/js/atlantis.min.js') }}"></script>
+
+	<script>
+		window.addEventListener('swal:confirm', event => { 
+			swal({
+				title: event.detail.message,
+				text: event.detail.text,
+				icon: event.detail.type,
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					window.livewire.emit('destroy');
+				}
+			});
+		});
+	</script>
 
     @yield('modal')
 	@yield('js-vendor')

@@ -4,20 +4,20 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="../assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                         <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
+                            {{ auth()->user()->username }}
+                            <span class="user-level">{{ ucfirst(auth()->user()->role) }}</span>
                         </span>
                     </a>
                 </div>
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item {{ (Request::segment(2) == "dashboard") ? "active" : "" }}">
-                    <a href="#">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -39,12 +39,12 @@
                     <div class="collapse" id="base">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.user.admin') }}">
                                     <span class="sub-item">Admin</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.user.staff') }}">
                                     <span class="sub-item">Pegawai</span>
                                 </a>
                             </li>
