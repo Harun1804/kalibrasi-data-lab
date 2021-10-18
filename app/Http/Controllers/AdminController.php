@@ -15,4 +15,14 @@ class AdminController extends Controller
     {
         return view('admin.users');
     }
+
+    public function merkAlat()
+    {
+        return view('admin.malat');
+    }
+
+    public function alat()
+    {
+        return view('admin.alat');
+    }
 }

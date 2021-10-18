@@ -61,13 +61,13 @@
                     <div class="collapse" id="kalibrasi">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href="#">
-                                    <span class="sub-item">Alat</span>
+                                <a href="{{ route('admin.kalibrasi.merk.alat') }}">
+                                    <span class="sub-item">Merk Alat</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <span class="sub-item">Merk Alat</span>
+                                <a href="{{ route('admin.kalibrasi.alat') }}">
+                                    <span class="sub-item">Alat</span>
                                 </a>
                             </li>
                             <li>

@@ -26,7 +26,15 @@ Route::get('logout',[AuthController::class,'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
-        Route::get('users/admin',[AdminController::class,'users'])->name('user.admin');
-        Route::get('users/staff',[AdminController::class,'users'])->name('user.staff');
+
+        Route::prefix('users')->name('user.')->group(function () {            
+            Route::get('admin',[AdminController::class,'users'])->name('admin');
+            Route::get('staff',[AdminController::class,'users'])->name('staff');
+        });
+
+        Route::prefix('kalibrasi')->name('kalibrasi.')->group(function () {
+            Route::get('merk-alat', [AdminController::class,'merkAlat'])->name('merk.alat');
+            Route::get('alat', [AdminController::class,'alat'])->name('alat');
+        });
     });
 });

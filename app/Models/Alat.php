@@ -18,6 +18,6 @@ class Alat extends Model
 
     public function merk()
     {
-        return $this->belongsTo(MerkAlat::class);
+        return $this->belongsTo(MerkAlat::class,'merk_alat_id');
     }
 }
