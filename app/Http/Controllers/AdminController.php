@@ -30,4 +30,9 @@ class AdminController extends Controller
     {
         return view('admin.tempat-waktu');
     }
+
+    public function perusahaan()
+    {
+        return view('admin.perusahaan');
+    }
 }

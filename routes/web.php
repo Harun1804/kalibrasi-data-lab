@@ -37,5 +37,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('alat', [AdminController::class,'alat'])->name('alat');
             Route::get('tempat-waktu', [AdminController::class,'tempatWaktu'])->name('tempat.waktu');
         });
+
+        Route::get('perusahaan', [AdminController::class,'perusahaan'])->name('perusahaan');
     });
 });

@@ -85,7 +85,7 @@
                 </li>
                 
                 <li class="nav-item {{ (Request::segment(2) == "perusahaan") ? "active" : "" }}">
-                    <a href="#">
+                    <a href="{{ route('admin.perusahaan') }}">
                         <i class="fas fa-home"></i>
                         <p>Kelola Perusahaan</p>
                     </a>
