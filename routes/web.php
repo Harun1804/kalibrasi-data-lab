@@ -42,4 +42,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('perusahaan', [AdminController::class,'perusahaan'])->name('perusahaan');
     });
+
+    Route::prefix('staff')->name('staff.')->group(function () {
+        Route::get('dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+        Route::get('kalibrasi',[UserController::class,'kalibrasi'])->name('kalibrasi');
+    });
 });

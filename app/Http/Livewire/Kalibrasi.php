@@ -15,7 +15,7 @@ class Kalibrasi extends Component
     use WithFileUploads;
 
     public $tools,$companies,$tempatWaktu;
-    public $alatID,$perusahaanID,$twID,$scan,$tipe,$selectedID;
+    public $alatID,$perusahaanID,$twID,$scan,$tipe,$selectedID,$oldScan;
     public $formMode = false;
     public $editMode = false;
     public $uploadScan = false;
@@ -123,7 +123,7 @@ class Kalibrasi extends Component
     {
         $kalibrasi = ModelsKalibrasi::findOrFail($id);
         $this->selectedID   = $kalibrasi->id;
-        $this->scan         = $kalibrasi->scan;
+        $this->oldScan      = $kalibrasi->scan;
         $this->formMode     = true;
         $this->uploadScan   = true;
     }

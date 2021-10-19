@@ -7,7 +7,11 @@
             @if ($editMode)
                 @include('livewire.kalibrasi.edit')
             @else
-                @include('livewire.kalibrasi.create')
+                @if ($uploadScan)
+                    @include('livewire.kalibrasi.editscan')
+                @else
+                    @include('livewire.kalibrasi.create')
+                @endif
             @endif
         @endif
     </div>
@@ -16,9 +20,11 @@
             <div class="card-header">
                 <div class="card-title">
                     Data Merk Alat
+                    @if (auth()->user()->role == "admin")
                     <div class="float-right">
                         <button type="button" class="btn btn-sm btn-primary" wire:click="create">Tambah Data</button>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="card-body">
@@ -27,7 +33,7 @@
                         <thead>
                             <tr>
                                 <th scope="col" rowspan="2">#</th>
-                                <th scope="col" rowspan="2">Action</th>
+                                <th scope="col" rowspan="2" colspan="{{ (auth()->user()->role == "admin") ? 2 : 1 }}" class="kosong">Action</th>
                                 <th scope="col" rowspan="2">Alat</th>
                                 <th scope="col" rowspan="2">Scan</th>
                                 <th scope="col" rowspan="2">Perusahaan</th>
@@ -48,13 +54,21 @@
                             @forelse ($kalibrasi as $kb)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-warning" wire:click="edit({{ $kb->id }})">Edit</button>
-                                        <button type="button" class="btn btn-sm btn-danger" wire:click="alertConfirm({{ $kb->id }})">Hapus</button>
-                                    </td>
+                                    @if (auth()->user()->role == "admin")
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-warning" wire:click="edit({{ $kb->id }})">Edit</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger" wire:click="alertConfirm({{ $kb->id }})">Hapus</button>
+                                        </td>
+                                    @else
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-success" wire:click="editScan({{ $kb->id }})">Masukan Hasil Scan</button>
+                                        </td>
+                                    @endif
                                     <td>{{ $kb->alat->nama_alat }}</td>
                                     <td>
-                                        <img src="{{ asset($kb->scan) }}" alt="{{ $kb->alat->nama_alat }}">
+                                        <img src="{{ asset($kb->scan) }}" alt="{{ $kb->alat->nama_alat }}" width="150px">
                                     </td>
                                     <td>{{ $kb->perusahaan->nama_perusahaan }}</td>
                                     <td>{{ $kb->tempatWaktu->tempat }}</td>

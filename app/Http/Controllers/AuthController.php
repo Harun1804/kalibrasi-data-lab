@@ -16,6 +16,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
             if (Auth::user()->role == "admin") {
                 return redirect()->route('admin.dashboard');
+            }elseif(AUth::user()->role == "staff"){
+                return redirect()->route('staff.dashboard');
             }
         }else{
             return redirect()->back()->with('failed','Gagal Login!!!');

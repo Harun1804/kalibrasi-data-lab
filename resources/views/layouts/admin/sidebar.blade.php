@@ -17,7 +17,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item {{ (Request::segment(2) == "dashboard") ? "active" : "" }}">
-                    <a href="{{ route('admin.dashboard') }}">
+                    <a href="{{ (auth()->user()->role == "admin") ? route('admin.dashboard') : route('staff.dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -30,6 +30,7 @@
                     <h4 class="text-section">Menu</h4>
                 </li>
                 
+                @if (auth()->user()->role == "admin")
                 <li class="nav-item {{ (Request::segment(2) == "users") ? "active" : "" }}">
                     <a data-toggle="collapse" href="#base">
                         <i class="fas fa-layer-group"></i>
@@ -90,6 +91,16 @@
                         <p>Kelola Perusahaan</p>
                     </a>
                 </li>
+                @endif
+
+                @if (auth()->user()->role == "staff")
+                <li class="nav-item {{ (Request::segment(2) == "kalibrasi") ? "active" : "" }}">
+                    <a href="{{ route('staff.kalibrasi') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Kalibrasi Data</p>
+                    </a>
+                </li>
+                @endif
 
             </ul>
         </div>

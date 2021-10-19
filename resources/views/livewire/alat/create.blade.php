@@ -13,8 +13,8 @@
                             <div class="form-group">
                                 <label for="merkID">Merk Alat</label>
                                 <select class="form-control @error('merkID') is-invalid @enderror" id="merkID" wire:model="merkID">
+                                    <option>Pilih Merk Alat</option>
                                     @foreach ($merks as $merk)
-                                        <option>Pilih Merk Alat</option>
                                         <option value="{{ $merk->id }}">{{ $merk->nama_merk }}</option>
                                     @endforeach
                                 </select>
@@ -24,7 +24,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="namaAlat">Nama Alat</label>
-                                <input type="text" class="form-control @error('namaAlat') is-invalid @enderror" id="namaAlat" placeholder="Enter Merk Alat" required wire:model="namaAlat" value="{{ old('namaAlat') }}">
+                                <input type="text" class="form-control @error('namaAlat') is-invalid @enderror" id="namaAlat" placeholder="Enter Nama Alat" required wire:model="namaAlat" value="{{ old('namaAlat') }}">
                                 @error('namaAlat')
                                     <small id="namaAlat" class="form-text text-danger">{{ $message }}</small>
                                 @enderror
