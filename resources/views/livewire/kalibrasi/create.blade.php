@@ -26,7 +26,7 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="perusahaanID">Alat</label>
+                                <label for="perusahaanID">Perusahaan</label>
                                 <select class="form-control @error('perusahaanID') is-invalid @enderror" id="perusahaanID" wire:model="perusahaanID">
                                     <option>Pilih Perusahaan</option>
                                     @foreach ($companies as $company)
