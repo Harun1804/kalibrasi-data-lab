@@ -76,7 +76,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{ route('admin.kalibrasi.input') }}">
                                     <span class="sub-item">Input Data Kalibrasi</span>
                                 </a>
                             </li>

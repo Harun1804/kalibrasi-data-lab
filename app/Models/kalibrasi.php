@@ -42,4 +42,9 @@ class kalibrasi extends Model
     {
         return $this->belongsTo(TempatWaktuKalibrasi::class);
     }
+
+    public function getScanAttribute($value)
+    {
+        return url('storage/'.$value);
+    }
 }

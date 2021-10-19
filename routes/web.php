@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('merk-alat', [AdminController::class,'merkAlat'])->name('merk.alat');
             Route::get('alat', [AdminController::class,'alat'])->name('alat');
             Route::get('tempat-waktu', [AdminController::class,'tempatWaktu'])->name('tempat.waktu');
+            Route::get('input', [UserController::class,'kalibrasi'])->name('input');
         });
 
         Route::get('perusahaan', [AdminController::class,'perusahaan'])->name('perusahaan');

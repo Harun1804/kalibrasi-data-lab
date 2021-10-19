@@ -19,7 +19,7 @@ class CreateKalibrasisTable extends Migration
             $table->foreignId('alat_id')->constrained('alat');
             $table->foreignId('perusahaan_id')->constrained('perusahaan');
             $table->foreignId('tempat_waktu_id')->constrained('tempat_waktu_kalibrasi');
-            $table->string('scan',255);
+            $table->string('scan',255)->nullable();
             $table->string('tipe',255);
             $table->timestamps();
         });
