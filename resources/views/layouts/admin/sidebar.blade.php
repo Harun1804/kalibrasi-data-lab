@@ -4,7 +4,7 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="{{ asset('assets/img/profile.jpg') }}" alt="..." class="avatar-img rounded-circle">
+                    <img src="{{ asset('assets/img/default.png') }}" alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
                     <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -33,7 +33,7 @@
                 @if (auth()->user()->role == "admin")
                 <li class="nav-item {{ (Request::segment(2) == "users") ? "active" : "" }}">
                     <a data-toggle="collapse" href="#base">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-users"></i>
                         <p>Users</p>
                         <span class="caret"></span>
                     </a>
@@ -55,7 +55,7 @@
                 
                 <li class="nav-item {{ (Request::segment(2) == "kalibrasi") ? "active" : "" }}">
                     <a data-toggle="collapse" href="#kalibrasi">
-                        <i class="fas fa-layer-group"></i>
+                        <i class="fas fa-sun"></i>
                         <p>Kalibrasi</p>
                         <span class="caret"></span>
                     </a>
@@ -87,7 +87,7 @@
                 
                 <li class="nav-item {{ (Request::segment(2) == "perusahaan") ? "active" : "" }}">
                     <a href="{{ route('admin.perusahaan') }}">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-building"></i>
                         <p>Kelola Perusahaan</p>
                     </a>
                 </li>
@@ -96,7 +96,7 @@
                 @if (auth()->user()->role == "staff")
                 <li class="nav-item {{ (Request::segment(2) == "kalibrasi") ? "active" : "" }}">
                     <a href="{{ route('staff.kalibrasi') }}">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-sun"></i>
                         <p>Kalibrasi Data</p>
                     </a>
                 </li>

@@ -68,7 +68,7 @@
                                     @endif
                                     <td>{{ $kb->alat->nama_alat }}</td>
                                     <td>
-                                        <img src="{{ asset($kb->scan) }}" alt="{{ $kb->alat->nama_alat }}" width="150px">
+                                        <img src="{{ asset($kb->scan) }}" alt="{{ $kb->alat->nama_alat }}" width="150px" data-lightbox="alat">
                                     </td>
                                     <td>{{ $kb->perusahaan->nama_perusahaan }}</td>
                                     <td>{{ $kb->tempatWaktu->tempat }}</td>
