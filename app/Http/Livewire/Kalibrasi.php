@@ -32,7 +32,7 @@ class Kalibrasi extends Component
     public function render()
     {
         $kalibrasi = ModelsKalibrasi::with(['user','alat','perusahaan','tempatWaktu','alat.merk'])->orderBy('id','desc')->get();
-        $lokasi     = TempatWaktuKalibrasi::select('tahun')->distinct()->get();
+        $lokasi     = TempatWaktuKalibrasi::select('tahun')->distinct()->orderBy('tahun','asc')->get();
         return view('livewire.kalibrasi.index',compact(['kalibrasi','lokasi']));
     }
 

@@ -20,12 +20,6 @@
                     petugas dalam pengolahan data yang ada pada  laboratorium Patologi Klinik yang 
                     terbagi atas 3 bagian yaitu Kimia Klinik, Hematologi serta Urinalisasi.
                 </p>
-                <p></p>
-                <p> Untuk mempermudah proses administratif dimohon petugas untuk mengisi
-                    <a href="https://docs.google.com/spreadsheets/d/1f-_65i4vqqRj_1FLkwBFQDDRH-itAlbw/edit?usp=sharing&amp;ouid=104437610794306973769&amp;rtpof=true&amp;sd=true"> 
-                        Daftar Kunjungan Petugas Patologi Klinik.
-                    </a>
-                </p>
             </div>
         </div>
     </div>

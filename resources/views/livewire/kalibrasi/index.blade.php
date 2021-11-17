@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    Data Merk Alat
+                    Data Kalibrasi Alat
                     @if (auth()->user()->role == "admin")
                     <div class="float-right">
                         <button type="button" class="btn btn-sm btn-primary" wire:click="create">Tambah Data</button>
@@ -99,7 +99,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td class="kosong" colspan="{{ 8 + count($lokasi) }}">Belum Ada Data</td>
+                                <td class="kosong" colspan="{{ 9 + count($lokasi) }}">Belum Ada Data</td>
                             </tr>
                             @endforelse
                         </tbody>

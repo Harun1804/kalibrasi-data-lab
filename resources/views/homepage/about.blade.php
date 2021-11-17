@@ -8,14 +8,9 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    Gambar 
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">Kontak</div>
-                    <div class="col-md-6" style="text-align: end">Sosmed</div>
-                    <div class="col-md-12" style="text-align: center">Nama Web</div>
+                    <center>
+                        <img src="{{ asset('assets/img/organisasi.jpeg') }}" alt="Struktur Organisasi" class="img img-fluid">
+                    </center>
                 </div>
             </div>
         </div>
