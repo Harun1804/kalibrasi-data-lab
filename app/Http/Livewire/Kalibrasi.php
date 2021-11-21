@@ -2,20 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Alat;
 use Livewire\Component;
+use App\Models\Perusahaan;
 use Livewire\WithFileUploads;
 use App\Models\TempatWaktuKalibrasi;
 use Illuminate\Support\Facades\Auth;
 use App\Models\kalibrasi as ModelsKalibrasi;
-use App\Models\Perusahaan;
 
 class Kalibrasi extends Component
 {
     use WithFileUploads;
 
-    public $tools,$companies,$tempatWaktu;
-    public $alatID,$perusahaanID,$twID,$scan,$tipe,$selectedID,$oldScan;
+    public $tools,$companies;
+    public $tempat,$waktu;
+    public $alatID,$perusahaanID,$scan,$tipe,$selectedID,$oldScan;
     public $formMode = false;
     public $editMode = false;
     public $uploadScan = false;
@@ -23,8 +25,9 @@ class Kalibrasi extends Component
     protected $rules = [
         'alatID'        => 'required',
         'perusahaanID'  => 'required',
-        'twID'          => 'required',
-        'tipe'          => 'required'
+        'tipe'          => 'required',
+        'tempat'        => 'required',
+        'waktu'         => 'required|date'
     ];
 
     protected $listeners = ['destroy'];
@@ -66,6 +69,8 @@ class Kalibrasi extends Component
         $this->twID         = null;
         $this->scan         = null;
         $this->tipe         = null;
+        $this->tempat   = null;
+        $this->waktu    = null;
     }
 
     public function create()
@@ -77,11 +82,17 @@ class Kalibrasi extends Component
     {
         $this->validate();
 
+        $twID = TempatWaktuKalibrasi::create([
+            'tempat'    => $this->tempat,
+            'tahun'     => Carbon::parse($this->waktu)->year,
+            'tanggal'   => $this->waktu,
+        ]);
+
         ModelsKalibrasi::create([
             'user_id'  => Auth::id(),
             'alat_id'  => $this->alatID,
             'perusahaan_id'  => $this->perusahaanID,
-            'tempat_waktu_id'  => $this->twID,
+            'tempat_waktu_id'  => $twID->id,
             'tipe'  => $this->tipe,
         ]);
 
@@ -93,11 +104,14 @@ class Kalibrasi extends Component
     public function edit($id)
     {
         $kalibrasi = ModelsKalibrasi::findOrFail($id);
+        $twk       = TempatWaktuKalibrasi::findOrFail($kalibrasi->tempat_waktu_id);
         $this->selectedID   = $kalibrasi->id;
         $this->alatID       = $kalibrasi->alat_id;
         $this->perusahaanID = $kalibrasi->perusahaan_id;
         $this->twID         = $kalibrasi->tempat_waktu_id;
         $this->tipe         = $kalibrasi->tipe;
+        $this->tempat       = $twk->tempat;
+        $this->waktu        = $twk->tanggal;
         $this->formMode     = true;
         $this->editMode     = true;
     }
@@ -105,6 +119,13 @@ class Kalibrasi extends Component
     public function update()
     {
         $merk = ModelsKalibrasi::findOrFail($this->selectedID);
+        $twk = TempatWaktuKalibrasi::findOrFail($merk->tempat_waktu_id);
+        $twk->update([
+            'tempat'    => $this->tempat,
+            'tahun'     => Carbon::parse($this->waktu)->year,
+            'tanggal'   => $this->waktu,
+        ]);
+
         $merk->update([
             'user_id'  => Auth::id(),
             'alat_id'  => $this->alatID,

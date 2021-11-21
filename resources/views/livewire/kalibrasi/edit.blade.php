@@ -41,15 +41,24 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="twID">Tempat</label>
-                                <select class="form-control @error('twID') is-invalid @enderror" id="twID" wire:model="twID">
-                                    <option>Pilih Tempat</option>
-                                    @foreach ($tempatWaktu as $tw)
-                                        <option value="{{ $tw->id }}" @if($tw->id == $twID) selected @endif>{{ $tw->tempat }}</option>
-                                    @endforeach
-                                </select>
-                                @error('twID')
-                                    <small id="namaAlat" class="form-text text-danger">{{ $message }}</small>
+                                <label for="tempat">Tempat Kalibrasi</label>
+                                <input type="text" class="form-control @error('tempat') is-invalid @enderror"
+                                    id="tempat" placeholder="Enter Tempat Kalibrasi" required wire:model="tempat"
+                                    value="{{ old('tempat') }}">
+                                @error('tempat')
+                                <small id="tempat" class="form-text text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="waktu">Waktu Kalibrasi</label>
+                                <input type="date" class="form-control @error('waktu') is-invalid @enderror" id="waktu"
+                                    placeholder="Enter Waktu Kalibrasi" required wire:model="waktu"
+                                    value="{{ old('waktu') }}">
+                                @error('waktu')
+                                <small id="waktu" class="form-text text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
                         </div>
