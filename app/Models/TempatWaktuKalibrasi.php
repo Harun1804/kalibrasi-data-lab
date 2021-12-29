@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Mail\NotifyKalibration;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class TempatWaktuKalibrasi extends Model
 {
@@ -15,4 +17,10 @@ class TempatWaktuKalibrasi extends Model
         'tahun',
         'tanggal'
     ];
+
+    public function notify($tanggal)
+    {
+        Mail::to("admin@mail.com")->send(new NotifyKalibration($tanggal));
+        return "Email Terkirim";
+    }
 }

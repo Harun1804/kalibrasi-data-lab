@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTempatWaktuKalibrasisTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTempatWaktuKalibrasisTable extends Migration
      */
     public function up()
     {
-        Schema::create('tempat_waktu_kalibrasi', function (Blueprint $table) {
-            $table->id();
-            $table->string('tempat',100);
-            $table->year('tahun');
-            $table->datetime('tanggal');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateTempatWaktuKalibrasisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tempat_waktu_kalibrasi');
+        Schema::dropIfExists('password_resets');
     }
 }
