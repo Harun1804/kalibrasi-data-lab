@@ -40,12 +40,9 @@ class SendKalibrationMessage extends Command
     public function handle()
     {
         $tanggalKalibrasi = TempatWaktuKalibrasi::whereNotNull('tanggal')->get();
-        $waktuSekarang = Carbon::now();
         foreach ($tanggalKalibrasi as $tk) {
             $dbDate = Carbon::parse($tk->tanggal);
-            if ($waktuSekarang == $dbDate->addYear()) {
-                $tk->notify($dbDate->addYear());
-            }
+            $tk->notify($dbDate->addYear());
         }
     }
 }
